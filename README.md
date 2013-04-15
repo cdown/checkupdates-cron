@@ -8,5 +8,7 @@ change, and not every time (which results in a lot of e-mails to sift through).
 
 Use something like this in `/etc/cron.d`:
 
+    MAILTO=you@yourdomain.com
     PATH=/usr/bin
+
     */15 * * * * nobody checkupdates-cron
