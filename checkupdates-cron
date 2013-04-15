@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-set -e
+#!/bin/sh
 
 PATH=/usr/bin:/bin
 
@@ -8,12 +6,12 @@ dir="/var/tmp/checkupdates-email.$USER"
 
 mkdir -p "$dir"
 
-if [[ -f "$dir/current" ]]; then
-    mv "$dir/"{current,last}
+if [ -f "$dir/current" ]; then
+    mv "$dir/current" "$dir/last"
 fi
 
 checkupdates > "$dir/current"
 
-if ! diff "$dir/"{current,last} &>/dev/null; then
+if ! diff "$dir/current" "$dir/last" >/dev/null 2>&1; then
     cat "$dir/current"
 fi
