@@ -2,7 +2,7 @@
 
 PATH=/usr/bin:/bin
 
-dir="/var/tmp/checkupdates-email.$USER"
+dir="/var/tmp/checkupdates-cron.$USER"
 
 mkdir -p "$dir"
 
