@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+PATH=/usr/bin:/bin
+
+dir="/var/tmp/checkupdates-email.$USER"
+
+mkdir -p "$dir"
+
+if [[ -f "$dir/current" ]]; then
+    mv "$dir/"{current,last}
+fi
+
+checkupdates > "$dir/current"
+
+if ! diff "$dir/"{current,last} &>/dev/null; then
+    cat "$dir/current"
+fi
