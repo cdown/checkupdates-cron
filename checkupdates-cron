@@ -5,6 +5,8 @@ PATH=/usr/bin:/bin
 dir="/var/tmp/checkupdates-cron.$USER"
 lockdir="$dir/.lock"
 
+mkdir -p "$dir" || exit
+
 if ! mkdir "$lockdir" >/dev/null 2>&1; then
     echo "cannot continue, storage directory locked" >&2
     exit 1
